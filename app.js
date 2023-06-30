@@ -8,6 +8,7 @@ app.use(express.json());
 app.post("/register", controler.register);
 app.post("/verify", controler.verify);
 app.post("/login", controler.login);
+app.get("/user/:id",controler.user);
 app.post("/admin", controler.admin);
 
 

@@ -24,6 +24,11 @@ module.exports.getUser=async(email)=>{
 
 };
 
+module.exports.getUserByID=async(_id)=>{
+    return User.findOne({_id})
+
+};
+
 const getEncryptedPassword=async(password)=>{
         const encriptPassword=await bcrypt.hash(password, 10);
         return encriptPassword;
@@ -96,6 +101,11 @@ module.exports.verifyToken=async(token)=>{
 
 module.exports.disableUserByID=async(_id)=>{
     const user1= await User.findOne({_id});
-    await user1.updateOne({isActive:false})
+    user1=await user1.updateOne({isActive:false})
     console.log(user1);
+}
+
+module.exports.getJustPublicData=async(user)=>{
+    const {_id,first_name,last_name,status,isActive,email,verified}=user;
+    return {_id,first_name,last_name,status,isActive,email,verified};
 }

@@ -80,6 +80,16 @@ module.exports.login=async (req, res) => {
         eror.handleError(err);
       }}
 
+module.exports.user=async(req,res)=>{
+    try{
+        const {id} =req.params;
+        const user=await logic.getUserByID(id);
+        const publicData=await logic.getJustPublicData(user)
+        return res.send(publicData);
+    }catch(err){
+        eror.handleError(err);
+    }
+}
 
 module.exports.admin=async(req,res)=>{
         try{
