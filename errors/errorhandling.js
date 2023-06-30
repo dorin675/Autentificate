@@ -7,6 +7,7 @@ const referenceError = new ReferenceError('Variable not defined');
 const rangeError = new RangeError('Value out of range');
 const uriError = new URIError('Invalid URI');
 
+
 const errorDictionary = {
   notFound: NotFoundError,
   unauthorized: UnauthorizedError,
@@ -20,7 +21,7 @@ const errorDictionary = {
 
 module.exports.handleError=(errorCode) => {
   const error = errorDictionary[errorCode.name];
-  console.log(errorCode)
+  console.log(errorCode.message)
   if (error) {
     console.log(error.message);
   } else {
